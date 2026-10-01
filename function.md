@@ -648,4 +648,282 @@ And if they ask why functions are useful:
 
 > Functions help us reuse code, reduce repetition, improve readability, and make programs easier to maintain and test.
 
+## 23. Function calling flow
 
+A function call is the moment we execute a function by providing arguments.
+
+```python
+def multiply(a, b):
+    result = a * b
+    return result
+
+answer = multiply(5, 4)
+print(answer)
+```
+
+### Flow of execution
+
+1. Python reads the function definition.
+2. When `multiply(5, 4)` is called, `5` is assigned to `a` and `4` is assigned to `b`.
+3. The function body executes.
+4. It calculates `result = 20`.
+5. It returns `20`.
+6. That returned value is stored in `answer`.
+7. `print(answer)` displays `20`.
+
+This shows the complete flow: input ? processing ? return ? output.
+
+---
+
+## 24. Functions are objects
+
+In Python, functions are also objects. This means we can assign them to variables and call them later.
+
+```python
+def greet():
+    print("hello")
+
+x = greet
+x()
+```
+
+### Explanation
+
+`x` now refers to the same function object as `greet`. So calling `x()` runs the `greet()` function.
+
+This is an important Python feature and it supports advanced programming patterns.
+
+---
+
+## 25. Passing a function to another function
+
+A function can accept another function as an argument. This is called a higher-order function.
+
+```python
+def square(x):
+    return x * x
+
+
+def process(func, value):
+    return func(value)
+
+print(process(square, 5))
+```
+
+### Output
+
+```python
+25
+```
+
+### Explanation
+
+`process()` receives the function `square` and the value `5`. It then calls `square(5)`, which returns `25`.
+
+This demonstrates how functions can be passed around and used dynamically.
+
+---
+
+## 26. Lambda functions
+
+A lambda function is a small anonymous function defined in one line.
+
+```python
+square = lambda x: x * x
+print(square(5))
+```
+
+### Output
+
+```python
+25
+```
+
+Lambda functions are commonly used for short operations, especially with functions like `map()`.
+
+```python
+numbers = [1, 2, 3, 4]
+result = list(map(lambda x: x * 2, numbers))
+print(result)
+```
+
+### Output
+
+```python
+[2, 4, 6, 8]
+```
+
+Lambda functions are useful when the logic is small and simple.
+
+---
+
+## 27. Recursion
+
+Recursion is when a function calls itself.
+
+```python
+def countdown(n):
+    if n == 0:
+        return
+    print(n)
+    countdown(n - 1)
+
+countdown(5)
+```
+
+### Output
+
+```python
+5
+4
+3
+2
+1
+```
+
+### Explanation
+
+The function continues calling itself until `n` becomes `0`. The condition `if n == 0: return` is the base case that stops the recursion.
+
+Recursion is useful for problems that can be divided into smaller versions of the same problem.
+
+---
+
+## 28. Function documentation
+
+Docstrings are strings used to describe what a function does.
+
+```python
+def add(a, b):
+    """Return the sum of two numbers."""
+    return a + b
+
+print(add.__doc__)
+```
+
+### Output
+
+```python
+Return the sum of two numbers.
+```
+
+### Why is this useful?
+
+Docstrings improve code readability and professional coding habits. They help other developers understand the function without reading the whole implementation.
+
+---
+
+## 29. Type hints
+
+Type hints tell the programmer and tools what kinds of values a function accepts and returns.
+
+```python
+def add(a: int, b: int) -> int:
+    return a + b
+```
+
+### Explanation
+
+- `a: int` means the first argument should be an integer.
+- `b: int` means the second argument should be an integer.
+- `-> int` means the function returns an integer.
+
+Python does not force these types at runtime, but they improve clarity and help IDEs and linting tools.
+
+### Practical example: smart electricity bill
+
+```python
+def calculate_bill(units: int) -> float:
+    if units <= 100:
+        amount = units * 2
+    elif units <= 200:
+        amount = 100 * 2 + (units - 100) * 4
+    else:
+        amount = 100 * 2 + 100 * 4 + (units - 200) * 6
+    return amount + 100
+
+units = int(input("Enter units: "))
+bill = calculate_bill(units)
+print("Total bill:", bill)
+```
+
+### Why use a function here?
+
+Creating `calculate_bill()` gives us:
+
+- separation of responsibilities
+- reusability
+- easier testing
+- better readability
+- easier maintenance
+
+---
+
+## 30. Function design
+
+A well-designed function usually follows three steps:
+
+- input
+- processing
+- output
+
+```python
+def calculate_total(price, tax_rate):
+    total = price + (price * tax_rate)
+    return total
+```
+
+This function accepts input, does a calculation, and returns the result.
+
+### Good function design principles
+
+A good function should:
+
+- do one clear task
+- have a meaningful name
+- accept parameters only when needed
+- return a value when useful
+- be easy to test and maintain
+
+### Avoid giant functions
+
+A function that performs too many tasks becomes difficult to read and debug.
+
+```python
+def student_system():
+    # 200 lines
+    # input
+    # validation
+    # calculation
+    # database
+    # printing
+```
+
+This is not a good design because it handles too many responsibilities.
+
+### Better design
+
+```python
+def get_students():
+    pass
+
+
+def validate_students():
+    pass
+
+
+def calculate_result():
+    pass
+
+
+def save_result():
+    pass
+
+
+def display_result():
+    pass
+```
+
+This approach follows the single-responsibility principle and makes the program cleaner and easier to manage.
+
+---
