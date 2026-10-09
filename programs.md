@@ -15,6 +15,13 @@ for character in text:
 print("Reversed string:", reversed_text)
 ```
 
+**Sample output**
+
+```text
+Enter a string: hello
+Reversed string: olleh
+```
+
 ## 2. Check Whether a Number Is a Palindrome
 
 A palindrome number reads the same forwards and backwards. Negative numbers
@@ -37,6 +44,13 @@ else:
     print("Not a palindrome number")
 ```
 
+**Sample output**
+
+```text
+Enter a number: 121
+Palindrome number
+```
+
 ## 3. Find the Largest Number in a List
 
 This program compares each list item with the current largest value. It does
@@ -57,6 +71,12 @@ else:
     print("Largest number:", largest)
 ```
 
+**Sample output**
+
+```text
+Largest number: 89
+```
+
 ## 4. Count Vowels in a String
 
 The string is converted to lowercase so both uppercase and lowercase vowels
@@ -71,6 +91,13 @@ for character in text.lower():
         vowel_count += 1
 
 print("Number of vowels:", vowel_count)
+```
+
+**Sample output**
+
+```text
+Enter a string: Hello World
+Number of vowels: 3
 ```
 
 ## 5. Calculate the Factorial of a Number
@@ -92,4 +119,11 @@ def factorial(number):
 
 number = int(input("Enter a non-negative integer: "))
 print("Factorial:", factorial(number))
+```
+
+**Sample output**
+
+```text
+Enter a non-negative integer: 5
+Factorial: 120
 ```
